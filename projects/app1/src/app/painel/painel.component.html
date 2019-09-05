@@ -1,25 +1,30 @@
-<p>componente painel</p>
+<div class="dicas" style="text-align: center; margin-top: 10px;">
+    <p style="font-size:1em" >Dicas de como jogar:</p>
+    <p style="font-size:1em" >Voce deve traduzir a frase exatamente como se pede com espaçemnto, virgulas e pontuação</p>
+    <p style="font-size:1em" >AHHH ... ele não tem case sensetive, entao lembre-se de deixar tudo em letra maiscula no começo de cada frase</p>
+</div>
+
 
   <div class="container">
       <div class="jumbotron">
           <div class="row">
             <div class="col-sm-6">
-              <app-progresso></app-progresso>
+              <app-progresso [progresso]="progresso"></app-progresso>
             </div>
             <div class="col-sm-6">
                 <div class="d-flex justify-content-end">
-                 <app-tentativas></app-tentativas>
+                 <app-tentativas [tentativas]="tentativas"></app-tentativas>
                 </div>
             </div>
           </div>
 
           <div class="row">
               <div class="col">
-                <h6>Traduza a frase:</h6>
-                <p>How are You?</p>
+                <h6>{{ instrucao }}</h6>
+                <p>{{ rodadaFrase.fraseEng }}</p>
 
                 <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
+                  <textarea class="form-control" rows="3"(input)="atualizaResposta($event)" [value]="resposta"></textarea>
                 </div>
               </div>
           </div>
@@ -27,7 +32,7 @@
           <div class="row">
               <div class="col">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary">Verificar</button>
+                    <button type="button" class="btn btn-primary"(click)="verificaResposta()">Verificar</button>
                 </div>
               </div>
           </div>
